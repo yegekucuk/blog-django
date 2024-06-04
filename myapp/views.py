@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from .models import Post
 
 # Create your views here.
 def home(request):
@@ -17,4 +18,5 @@ def gallery(request):
     return render(request, './html/gallery.html')
 
 def posts(request):
-    return render(request, './html/posts.html')
+    posts_list = Post.objects.all()
+    return render(request, './html/posts.html', {'posts': posts_list})
