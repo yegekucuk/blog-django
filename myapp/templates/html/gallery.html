@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/gallery.js' %}"></script>
+    <title>Ege - Blog</title>
+    <style>
+        /* CSS */
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}" class="active">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1> Gallery </h1>
+        </header>
+        {% block content %}
+        <section>
+            <div class="slider">
+                <div class="slides">
+                    <img src="../img/gallery/img (1).JPEG" height="100px" alt="picture">
+                    <img src="../img/gallery/img (2).JPEG" height="100px" alt="picture">
+                    <img src="../img/gallery/img (3).JPEG" height="100px" alt="picture">
+                    <img src="../img/gallery/img (4).JPEG" height="100px" alt="picture">
+                </div>
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </section>
+        {% endblock %}
+        <footer>
+            <p class="copyright"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
+</body>
+</html>

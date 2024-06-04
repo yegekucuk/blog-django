@@ -1,0 +1,46 @@
+@media (min-width: 1201px) {
+    .main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    img.my_image {
+        height: 200px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .main {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    img.my_image {
+        height: 150px;
+    }
+
+    .menu li {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu li {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    img.my_image {
+        height: 100px;
+    }
+
+    .main, header, section {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    table, img {
+        width: 100%;
+    }
+}

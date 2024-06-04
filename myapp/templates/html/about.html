@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <title>Ege - Blog</title>
+    <style>
+        .animated_msg {
+            font-weight: bold;
+            animation: coloranimation 0.25s infinite alternate;
+        }
+        img.my_image {
+            height: 100px;
+        }
+        img.my_image:hover {
+            height: 150px;
+            transition: 0.5s;
+        }
+        ul.hobbies li:hover {
+            font-size: 18px;
+            transition: 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Main Page</a></li>
+            <li><a href="{% url 'about' %}" class="active">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1 style="text-align: center">Welcome to my blog!</h1>
+            <h3>Yunus Ege Kucuk</h3>
+        </header>
+        {% block content %}
+        <section>
+            <img src="{% static 'img/img1.jpg' %}" alt="my_image" class="my_image">
+            <div>
+                <p>Hello I am Yunus Ege Kucuk. I'm 21 years old and I am an Erasmus+ Exchange Student from <a href="https://en.wikipedia.org/wiki/Istanbul" target="_blank">Istanbul</a>,<a href="https://en.wikipedia.org/wiki/Turkey" target="_blank">Turkey</a>. I will be studying in UVT this semester!</p>
+            </div>
+            <p>
+                In Turkey, I study at Marmara University. I study on Computer Engineering field. I'm 3rd year student.<br/>
+                I have knowledge in Python, Java OOP, C, some Python Keras, very little HTML & CSS.
+            </p>
+            <h3>
+                Hobbies:
+            </h3>
+            <ul class="hobbies">
+                <li>Calisthenics</li>
+                <li>Lifting weights</li>
+                <li>Swimming</li>
+                <li>Playing basketball</li>
+                <li>Playing card games</li>
+                <li>Playing American billiards</li>
+                <li>Coding</li>
+            </ul>
+
+            <h3>
+                Education:
+            </h3>
+            <table style="width: 100%;text-align: center;border:1px solid black">
+                <tr>
+                    <th>University</th>
+                    <th>Program</th>
+                    <th>Degree</th>
+                </tr>
+                <tr>
+                    <td>Marmara University</td>
+                    <td>Computer Engineering</td>
+                    <td>Bachelor</td>
+                </tr>
+                <tr>
+                    <td>West University of Timisoara</td>
+                    <td>Computer Science</td>
+                    <td>Erasmus</td>
+                </tr>
+            </table>
+        </section>
+        {% endblock %}
+        <footer>
+            <p class="copyright"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* Setting headers */
+h1, h2, h3, h4, h5, h6 {
+    margin: 5px 0px 5px 0px;
+    text-align: center;
+}
+
+/* Setting body */
+body {
+    margin: 8px 8px 8px 8px;
+    background-color: antiquewhite;
+}
+
+/* Main */
+div.main {
+    margin:0 auto;
+    width: 100%; 
+    
+}
+
+/* Menu */
+ul.menu {
+    text-align: center;
+    list-style: none;
+    background-color: black;
+    margin: -8px;
+    margin-bottom: 0px;
+    padding: 0px;
+    display: block;
+}
+ul.menu>li {
+    padding: 20px;
+    display: inline-block;
+}
+ul.menu>li a {
+    text-decoration: none;
+    font-size: 22px;
+    color: whitesmoke;
+}
+ul.menu>li a:hover{
+    color: rgb(249, 206, 151);
+    transition: 0.3s;
+}
+ul.menu>li a.active {
+    color: rgb(249, 206, 151);
+}

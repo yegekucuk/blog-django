@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/form.css'%}"></script>
+    <title>Ege - Blog</title>
+    <style>
+        @keyframes destroy {
+            from { width: 100%; }
+            to { width: 50%; }
+        }
+
+        @keyframes destroy2 {
+            from { color: black; }
+            to { color: antiquewhite; }
+        }
+
+        .main {
+            animation: destroy 20s infinite alternate;
+        }
+
+        .text:hover {
+            animation: destroy2 1s infinite alternate
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}" class="active">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1 style="text-align: center" id="welcome">Welcome to my blog!</h1>
+            <h3>Reach me!</h3>
+        </header>
+        {% block content %}
+        <section>
+            <p>You can reach me by filling the form below!</p>
+
+            <form onsubmit="validateForm()">
+                <p> 
+                    <label class="text">Full name: <input name="firstName" id="firstName"/></label>
+                </p>
+                <p>
+                    <label> Gender: </label>
+                    <label>
+                        <input type="radio" name="gender" value="0" />Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="1" />Female
+                    </label>
+                </p>
+                <p>
+                    <label>Email: <input type="email" name="email" id="email"/></label>
+                </p>
+                <p>
+                    <label>Date of Birth: <input type="date" name="birthDate"></label>
+                </p>
+                <p>
+                    <label>Message: 
+                        <textarea name="message" cols="60" rows="6" id="message"></textarea>
+                    </label>
+                </p>
+                <p>
+                    <label>Files:
+                    </label>
+                </p>
+                <p>
+                    <button type="submit" value="Submit">Submit</button>
+                </p>
+                </form>
+
+        </section>
+        {% endblock %}
+        <footer>
+            <p style="text-align: end;"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
+</body>
+</html>

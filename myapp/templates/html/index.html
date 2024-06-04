@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <title>Ege - Blog</title>
+    <style>
+
+        @keyframes animationCopyRight {
+            0% { margin-right: 100px; margin-left: 0px; }
+            50% { margin-right: 0px; margin-left: 0px; }
+            100% { margin-right: 0px; margin-left: 100px; }
+        }
+
+        p.copyright {
+            text-align: center;
+            animation: animationCopyRight 3s infinite alternate;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}" class="active">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1>Welcome to my blog!</h1>
+            <h3>This is the home page!</h3>
+        </header>
+        {% block content %}
+        <section>
+            <img src="{% static 'img/img1.jpg' %}" alt="my_image" style="height: 100px; display: inline-block;">
+            <div style="display: inline-block;">
+                <p>Hello I am Yunus Ege Kucuk. I'm 21 years old and I am an Erasmus+ Exchange Student from <a href="https://en.wikipedia.org/wiki/Istanbul" target="_blank">Istanbul</a>,<a href="https://en.wikipedia.org/wiki/Turkey" target="_blank">Turkey</a>. I will be studying in UVT this semester!
+                <br/>Welcome to my website! You can use navigation menu to explore my page!</p>
+            </div>
+        </section>
+        {% endblock %}
+        <footer>
+            <p class="copyright"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
+</body>
+</html>

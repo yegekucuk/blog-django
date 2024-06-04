@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ post.title }}</title>
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<h1>{{ post.title }}</h1>
+<p>Posted on {{ post.post_date }}</p>
+<img src="{{ post.image.url }}" alt="{{ post.title }}">
+<p>{{ post.paragraph }}</p>
+<!--Only show additional details for the post details page -->
+<p>{{ post.more_details_for_the_dedicated_page }}</p>
+</body>
+</html>

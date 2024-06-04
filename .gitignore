@@ -1,0 +1,6 @@
+# Default ignores
+db.sqlite3
+__pycache__/
+
+#
+html-css-js/

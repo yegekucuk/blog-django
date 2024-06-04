@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/index_BackToTop.js' %}"></script>
+    <title>Ege - Blog</title>
+    <style>
+        .scrollToTopBtn {
+            background-color: antiquewhite;
+        }
+        .scrollToTopBtn:hover {
+            background-color: white;
+            transition: 0.3s;
+        }
+        ul.hobbies li:hover {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .hobby-details {
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 0px;
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}" class="active">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1 style="text-align: center">More about my hobbies!</h1>
+        </header>
+        {% block content %}
+        <section>
+            <p>
+                You can click to find more about my hobbies!
+            </p>
+
+            <ul class="hobbies">
+                <li onclick="displayHobby('Calisthenics')">Calisthenics</li>
+                <li onclick="displayHobby('Swimming')">Swimming</li>
+                <li onclick="displayHobby('Basketball')">Playing basketball</li>
+            </ul>
+            
+
+            <div class="hobby-details">
+                <!-- Content about the selected hobby will be displayed here -->
+                <iframe id="hobbyIframe" src="hobbies/standart.html" title="Calisthenics" width="100%" style="border: 0px">
+                    Your browser does not support iframes.
+                </iframe>
+            </div>
+        </section>
+        {% endblock %}
+        <br/><hr/>
+        <footer style="display: flex; height: 20px; justify-content: center;">
+            <button onclick="scrollToTop()" class="scrollToTopBtn" title="Go to top">Back to Top</button>
+            <p style="margin-left: 20px; margin-top: 0px;"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
+    <script>
+        function adjustIframeHeight() {
+            const iframe = document.getElementById('hobbyIframe');
+            let height = iframe.contentWindow.document.body.scrollHeight + 30;
+            iframe.style.height = height + 'px';
+        }
+    
+        function displayHobby(hobby) {
+            const iframe = document.getElementById('hobbyIframe');
+            iframe.src = `hobbies/${hobby.toLowerCase()}.html`;
+            iframe.onload = adjustIframeHeight;
+        }
+    </script>
+    
+</body>
+</html>
