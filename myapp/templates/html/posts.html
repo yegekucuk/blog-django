@@ -47,7 +47,17 @@
                 </article>
             {% endfor %}
             </div>
-            
+            <h2>Reviews</h2>
+            <ul>
+            {% for review in reviews %}
+            <li>
+            <p><strong>{{ review.email }}</strong> ({{ review.date }})</p>
+            <p>Rating: {{ review.rating }}</p>
+            <p>{{ review.comment }}</p>
+            </li>
+            {% endfor %}
+            </ul>
+            <a href="{% url 'submit_review' %}">Leave a Review</a>
         </section>
         {% endblock %}
         <footer>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Review
+from .forms import ReviewForm
 
 # Create your views here.
 def home(request):
@@ -23,4 +24,15 @@ def posts(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    return render(request, './html/post_detail.html', {'post': post})
+    reviews = Review.objects.all().order_by('-date')
+    return render(request, './html/post_detail.html', {'posts': posts, 'reviews': reviews})
+
+def submit_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ReviewForm()
+    return render(request, 'html/submit_review.html', {'form': form})
