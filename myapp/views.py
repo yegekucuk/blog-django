@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 # Create your views here.
@@ -20,3 +20,7 @@ def gallery(request):
 def posts(request):
     posts_list = Post.objects.all()
     return render(request, './html/posts.html', {'posts': posts_list})
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, './html/post_detail.html', {'post': post})

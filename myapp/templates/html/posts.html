@@ -40,7 +40,7 @@
             <div class="all_articles">
                 {% for post in posts %}
                 <article class="container">
-                    <h2 class="title">{{ post.title }}</h2>
+                    <a href="{% url 'post_detail' post.id %}"><h2 class="title">{{ post.title }}</h2></a>
                     <p id="post_date">Posted on {{ post.post_date }}</p>
                     <img src="{{ post.image.url }}" alt="post_image" class="post_image" style="width: 100%;">
                     <p>{{ post.paragraph }}</p>
