@@ -17,6 +17,11 @@
             border: 1px solid black;
             padding: 20px;
         }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body>
@@ -45,21 +50,31 @@
                     <img src="{{ post.image.url }}" alt="post_image" class="post_image" style="width: 100%;">
                     <p>{{ post.paragraph }}</p>
                 </article>
-            {% endfor %}
+                {% endfor %}
             </div>
+        {% endblock %}
             <h2>Reviews</h2>
-            <ul>
-            {% for review in reviews %}
-            <li>
-            <p><strong>{{ review.email }}</strong> ({{ review.date }})</p>
-            <p>Rating: {{ review.rating }}</p>
-            <p>{{ review.comment }}</p>
-            </li>
-            {% endfor %}
-            </ul>
+            <div style="display: flex; justify-content: center;">
+                <table style="text-align: center;">
+                    <tr>
+                        <th>Email</th>
+                        <th colspan="3">Date</th>
+                        <th>Rating</th>
+                        <th colspan="6">Comment</th>
+                    </tr>
+                    {% for review in reviews %}
+                    <tr>
+                        <td>{{ review.email }}</td>
+                        <td colspan="3">({{ review.date }})</td>
+                        <td>{{ review.rating }}</td>
+                        <td colspan="6">{{ review.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
             <a href="{% url 'submit_review' %}">Leave a Review</a>
         </section>
-        {% endblock %}
+        
         <footer>
             <hr>
             <p class="copyright" style="text-align: end;"> © Copyright 2023-2024. </p>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Review
 from .forms import ReviewForm
 
@@ -20,12 +20,12 @@ def gallery(request):
 
 def posts(request):
     posts_list = Post.objects.all()
-    return render(request, './html/posts.html', {'posts': posts_list})
+    reviews = Review.objects.all().order_by('-date')
+    return render(request, './html/posts.html', {'posts': posts_list, 'reviews': reviews})
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    reviews = Review.objects.all().order_by('-date')
-    return render(request, './html/post_detail.html', {'posts': posts, 'reviews': reviews})
+    return render(request, './html/post_detail.html', {'post': post})
 
 def submit_review(request):
     if request.method == 'POST':
