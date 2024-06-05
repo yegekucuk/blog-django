@@ -1,17 +1,63 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ post.title }}</title>
-<link rel="stylesheet" href="css/common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/index_BackToTop.js' %}"></script>
+    <script src="{% static 'js/goBack.js' %}"></script>
+    <title>Ege - Blog</title>
+    <style>
+        .btn {
+            background-color: antiquewhite;
+        }
+        .btn:hover {
+            background-color: white;
+            transition: 0.3s;
+        }
+        div.all_articles {
+            width: 50%;
+            margin: auto;
+        }
+        
+        article.container {
+            border: 1px solid black;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>{{ post.title }}</h1>
-<p>Posted on {{ post.post_date }}</p>
-<img src="{{ post.image.url }}" alt="{{ post.title }}">
-<p>{{ post.paragraph }}</p>
-<!--Only show additional details for the post details page -->
-<p>{{ post.more_details_for_the_dedicated_page }}</p>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}" class="active">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h2 class="title">{{ post.title }}</h2>
+        </header>
+        <section>
+            <article class="container">
+                <p id="post_date">Posted on {{ post.post_date }}</p>
+                <img src="{{ post.image.url }}" alt="post_image" class="post_image" style="width: 100%;">
+                <p>{{ post.paragraph }}</p>
+            </article>
+        </section>
+        <hr>
+        <footer style="display: flex; height: 20px; justify-content: center;">
+            <button onclick="scrollToTop()" class="btn" title="Go to top">Back to Top</button>
+            <button onclick="goBack()" class="btn" title="Go Back">Go Back</button>
+            <p style="margin-left: 20px; margin-top: 0px;"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
 </body>
 </html>

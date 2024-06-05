@@ -6,8 +6,16 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/index_BackToTop.js' %}"></script>
     <title>Ege - Blog</title>
     <style>
+        .scrollToTopBtn {
+            background-color: antiquewhite;
+        }
+        .scrollToTopBtn:hover {
+            background-color: white;
+            transition: 0.3s;
+        }
         div.all_articles {
             width: 50%;
             margin: auto;
@@ -32,11 +40,10 @@
     </nav>
     <div class="main">
         <header>
-            
+            <h1> All Articles </h1>
         </header>
         {% block content %}
         <section>
-            <h1> All Articles </h1>
             <div class="all_articles">
                 {% for post in posts %}
                 <article class="container">
@@ -49,10 +56,10 @@
             </div>
         {% endblock %}
         </section>
-        
-        <footer>
-            <hr>
-            <p class="copyright" style="text-align: end;"> © Copyright 2023-2024. </p>
+        <hr>
+        <footer style="display: flex; height: 20px; justify-content: center;">
+            <button onclick="scrollToTop()" class="scrollToTopBtn" title="Go to top">Back to Top</button>
+            <p style="margin-left: 20px; margin-top: 0px;"> © Copyright 2023-2024. </p>
         </footer>
     </div>
 </body>
