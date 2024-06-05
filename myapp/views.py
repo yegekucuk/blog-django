@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Review
-from .forms import ReviewForm
+from .forms import ReviewForm, MessageForm
 
 # Create your views here.
 def home(request):
@@ -14,7 +14,14 @@ def hobbies(request):
     return render(request, './html/hobbies.html')
 
 def contact(request):
-    return render(request, './html/form.html')
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = MessageForm()
+    return render(request, './html/form.html', {'form': form})
 
 def gallery(request):
     return render(request, './html/gallery.html')

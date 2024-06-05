@@ -12,3 +12,10 @@ class Review(models.Model):
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
     comment = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+
+class Messages(models.Model):
+    full_name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=6, choices=[('Male', 'Male'), ('Female', 'Female')])
+    email = models.EmailField()
+    birth_date = models.DateField()
+    message = models.TextField()

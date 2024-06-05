@@ -6,25 +6,11 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
-    <script src="{% static 'js/form.css'%}"></script>
+    <script src="{% static 'js/form.js'%}"></script>
     <title>Ege - Blog</title>
     <style>
-        @keyframes destroy {
-            from { width: 100%; }
-            to { width: 50%; }
-        }
-
-        @keyframes destroy2 {
-            from { color: black; }
-            to { color: antiquewhite; }
-        }
-
-        .main {
-            animation: destroy 20s infinite alternate;
-        }
-
-        .text:hover {
-            animation: destroy2 1s infinite alternate
+        hr {
+        border-color: black;
         }
     </style>
 </head>
@@ -45,46 +31,20 @@
             <h3>Reach me!</h3>
         </header>
         {% block content %}
-        <section>
-            <p>You can reach me by filling the form below!</p>
-
-            <form onsubmit="validateForm()">
-                <p> 
-                    <label class="text">Full name: <input name="firstName" id="firstName"/></label>
-                </p>
-                <p>
-                    <label> Gender: </label>
-                    <label>
-                        <input type="radio" name="gender" value="0" />Male
-                    </label>
-                    <label>
-                        <input type="radio" name="gender" value="1" />Female
-                    </label>
-                </p>
-                <p>
-                    <label>Email: <input type="email" name="email" id="email"/></label>
-                </p>
-                <p>
-                    <label>Date of Birth: <input type="date" name="birthDate"></label>
-                </p>
-                <p>
-                    <label>Message: 
-                        <textarea name="message" cols="60" rows="6" id="message"></textarea>
-                    </label>
-                </p>
-                <p>
-                    <label>Files:
-                    </label>
-                </p>
-                <p>
-                    <button type="submit" value="Submit">Submit</button>
-                </p>
-                </form>
-
-        </section>
+        <div style="display: flex; justify-content: center">
+            <section style="border: 1px solid black; padding: 20px;">
+                <p>You can reach me by filling the form below!</p>
+                <hr>
+                <form method="POST" onsubmit="validateForm()">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" style="width: 100%;">Submit</button>
+                    </form>
+            </section>
+        </div>
         {% endblock %}
         <footer>
-            <p style="text-align: end;"> © Copyright 2023-2024. </p>
+            <p style="text-align: center;"> © Copyright 2023-2024. </p>
         </footer>
     </div>
 </body>

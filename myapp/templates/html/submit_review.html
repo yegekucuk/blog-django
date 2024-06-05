@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,
-initial-scale=1.0">
-<title>Submit Review</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
+    <script src="{% static 'js/goBack.js' %}"></script>
+    <title>Ege - Blog</title>
+    <style>
+        .btn {
+            background-color: antiquewhite;
+        }
+        .btn:hover {
+            background-color: white;
+            transition: 0.3s;
+        }
+        hr {
+        border-color: black;
+        }
+    </style>
 </head>
 <body>
-<h1>Submit a Review</h1>
-<form method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit">Submit Review</button>
-</form>
-<a href="{% url 'home' %}">Back to Home</a>
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'home' %}" class="active">Main Page</a></li>
+            <li><a href="{% url 'about' %}">About me</a></li>
+            <li><a href="{% url 'hobbies' %}">Hobbies</a></li>
+            <li><a href="{% url 'contact' %}">Reach me</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'posts' %}">Posts</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+        <header>
+            <h1>Leave a review!</h1>
+        </header>
+        {% block content %}
+        <div style="display: flex; justify-content: center">
+            <section style="border: 1px solid black; padding: 20px;">
+                <form method="POST" onsubmit="validateForm()">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" style="width: 100%;">Submit</button>
+                    </form>
+            </section>
+        </div>
+        {% endblock %}
+        <footer style="display: flex; height: 20px; justify-content: center; margin-top: 20px;">
+            <button onclick="goBack()" class="btn" title="Go Back">Go Back</button>
+            <p style="margin-left: 20px; margin-top: 0px;"> © Copyright 2023-2024. </p>
+        </footer>
+    </div>
 </body>
 </html>
