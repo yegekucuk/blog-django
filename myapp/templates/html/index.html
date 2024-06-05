@@ -20,6 +20,10 @@
             animation: animationCopyRight 3s infinite alternate;
         }
 
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body>
@@ -48,6 +52,28 @@
         </section>
         {% endblock %}
         <footer>
+            <hr>
+            <h2>Reviews</h2>
+            <div style="display: flex; justify-content: center;">
+                <table style="text-align: center;">
+                    <tr>
+                        <th>Email</th>
+                        <th colspan="3">Date</th>
+                        <th>Rating</th>
+                        <th colspan="6">Comment</th>
+                    </tr>
+                    {% for review in reviews %}
+                    <tr>
+                        <td>{{ review.email }}</td>
+                        <td colspan="3">({{ review.date }})</td>
+                        <td>{{ review.rating }}</td>
+                        <td colspan="6">{{ review.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <a href="{% url 'submit_review' %}">Leave a Review</a>
+            <hr>
             <p class="copyright"> © Copyright 2023-2024. </p>
         </footer>
     </div>

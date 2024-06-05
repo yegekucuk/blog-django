@@ -54,15 +54,15 @@
             </p>
 
             <ul class="hobbies">
-                <li onclick="displayHobby('Calisthenics')">Calisthenics</li>
-                <li onclick="displayHobby('Swimming')">Swimming</li>
-                <li onclick="displayHobby('Basketball')">Playing basketball</li>
+                <li onclick="displayHobby('calisthenics')">Calisthenics</li>
+                <li onclick="displayHobby('swimming')">Swimming</li>
+                <li onclick="displayHobby('basketball')">Playing basketball</li>
             </ul>
             
 
             <div class="hobby-details">
                 <!-- Content about the selected hobby will be displayed here -->
-                <iframe id="hobbyIframe" src="hobbies/standart.html" title="Calisthenics" width="100%" style="border: 0px">
+                <iframe id="hobbyIframe" src="{% url 'standart' %}" title="Calisthenics" width="100%" style="border: 0px">
                     Your browser does not support iframes.
                 </iframe>
             </div>
@@ -83,7 +83,7 @@
     
         function displayHobby(hobby) {
             const iframe = document.getElementById('hobbyIframe');
-            iframe.src = `hobbies/${hobby.toLowerCase()}.html`;
+            iframe.src = `/hobbies/${hobby}/`;
             iframe.onload = adjustIframeHeight;
         }
     </script>

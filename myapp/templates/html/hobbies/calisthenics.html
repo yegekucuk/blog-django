@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/common.css">
-    <link rel="stylesheet" href="../../css/media.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}">
     <title>Ege - Blog</title>
     <style>
         div.main {
@@ -30,7 +31,7 @@
         </header>
         <section>
             <div style="display: flex; justify-content: center;">
-                <img src="../../img/cali1.jpg" alt="Calisthenics" width="500px">
+                <img src="{% static 'img/cali1.jpg' %}" alt="Calisthenics" width="500px">
             </div>
             <p>
                 Calisthenics, derived from the Greek words "kallos" (beauty) and "sthenos" (strength), is a form of exercise that utilizes the body's weight for resistance. This versatile and accessible form of fitness has surged in popularity due to its simplicity and effectiveness. It requires minimal equipment, making it an ideal workout regimen for people of all fitness levels and lifestyles.
