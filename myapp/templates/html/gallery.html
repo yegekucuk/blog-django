@@ -9,8 +9,23 @@
     <script src="{% static 'js/gallery.js' %}"></script>
     <title>Ege - Blog</title>
     <style>
-        /* CSS */
+        .slider, .buttons {
+            display: flex;
+            justify-content: center;
+        }
 
+        button {
+            margin: 20px;
+            width: 10%;
+            background-color: black;
+            color: antiquewhite;
+        }
+
+        button:hover {
+            background-color: antiquewhite;
+            color: black;
+            transition: 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -32,14 +47,16 @@
         <section>
             <div class="slider">
                 <div class="slides">
-                    <img src="../img/gallery/img (1).JPEG" height="100px" alt="picture">
-                    <img src="../img/gallery/img (2).JPEG" height="100px" alt="picture">
-                    <img src="../img/gallery/img (3).JPEG" height="100px" alt="picture">
-                    <img src="../img/gallery/img (4).JPEG" height="100px" alt="picture">
+                    <img src="{% static 'img/gallery/img (1).JPEG' %}" height="450px" alt="picture">
+                    <img src="{% static 'img/gallery/img (2).JPEG' %}" height="450px" alt="picture">
+                    <img src="{% static 'img/gallery/img (3).JPEG' %}" height="450px" alt="picture">
+                    <img src="{% static 'img/gallery/img (4).JPEG' %}" height="450px" alt="picture">
                 </div>
             </div>
-            <button class="prev" onclick="prevSlide()">&#10094;</button>
-            <button class="next" onclick="nextSlide()">&#10095;</button>
+            <div class="buttons">
+                <button class="prev" onclick="prevSlide()">&#10094;</button>
+                <button class="next" onclick="nextSlide()">&#10095;</button>
+            </div>
         </section>
         {% endblock %}
         <footer>
