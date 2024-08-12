@@ -1,5 +1,6 @@
 # Default ignores
 db.sqlite3
+db/db.sqlite3
 __pycache__/
 
 #
